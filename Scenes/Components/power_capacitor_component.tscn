@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://cnlgin0jlfuhj"]
+[gd_scene load_steps=2 format=3 uid="uid://cnlgin0jlfuhj"]
+
+[ext_resource type="Script" path="res://Scenes/Components/PowerCapacitorComponent.cs" id="1_0nerb"]
 
 [node name="PowerCapacitorComponent" type="Node"]
+script = ExtResource("1_0nerb")

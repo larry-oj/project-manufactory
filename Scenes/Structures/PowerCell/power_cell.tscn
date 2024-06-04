@@ -1,0 +1,36 @@
+[gd_scene load_steps=9 format=3 uid="uid://cvdrg8o1ra1i"]
+
+[ext_resource type="Texture2D" uid="uid://c7254uayb20go" path="res://Graphics/Buildings/power_cell.tres" id="1_br46n"]
+[ext_resource type="Script" path="res://Scenes/Structures/PowerCell/PowerCell.cs" id="1_gpqfu"]
+[ext_resource type="PackedScene" uid="uid://cnlgin0jlfuhj" path="res://Scenes/Components/power_capacitor_component.tscn" id="2_5wt6d"]
+[ext_resource type="PackedScene" uid="uid://dj722i2xd4o4s" path="res://Scenes/StateMachine/state_machine.tscn" id="3_c6872"]
+[ext_resource type="PackedScene" uid="uid://cyis1g0pm3d3r" path="res://Scenes/Components/power_source_component.tscn" id="3_shnwr"]
+[ext_resource type="PackedScene" uid="uid://bmsm3pceljady" path="res://Scenes/Components/power_consumer_component.tscn" id="4_euh3h"]
+[ext_resource type="Script" path="res://Scenes/Structures/PowerCell/Active.cs" id="5_fmq0w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6gk13"]
+size = Vector2(16, 32)
+
+[node name="PowerCell" type="StaticBody2D"]
+script = ExtResource("1_gpqfu")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_br46n")
+offset = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_6gk13")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="PowerConsumerComponent" parent="." instance=ExtResource("4_euh3h")]
+
+[node name="PowerCapacitorComponent" parent="." instance=ExtResource("2_5wt6d")]
+
+[node name="PowerSourceComponent" parent="." instance=ExtResource("3_shnwr")]
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("_initialState") instance=ExtResource("3_c6872")]
+_initialState = NodePath("Active")
+
+[node name="Active" type="Node" parent="StateMachine"]
+script = ExtResource("5_fmq0w")

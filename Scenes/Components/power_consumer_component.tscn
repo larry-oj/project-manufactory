@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmsm3pceljady"]
+
+[ext_resource type="Script" path="res://Scenes/Components/PowerConsumerComponent.cs" id="1_gppau"]
+
+[node name="PowerConsumerComponent" type="Node"]
+script = ExtResource("1_gppau")
