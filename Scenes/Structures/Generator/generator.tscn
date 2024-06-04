@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdjh3l3aomn8j"]
+[gd_scene load_steps=8 format=3 uid="uid://bdjh3l3aomn8j"]
 
 [ext_resource type="Script" path="res://Scenes/Structures/Generator/Generator.cs" id="1_k8fo4"]
 [ext_resource type="Texture2D" uid="uid://cws8k8ofxxope" path="res://Graphics/Buildings/generator_sprite.tres" id="2_vysrv"]
 [ext_resource type="PackedScene" uid="uid://dj722i2xd4o4s" path="res://Scenes/StateMachine/state_machine.tscn" id="3_4xj53"]
 [ext_resource type="PackedScene" uid="uid://cyis1g0pm3d3r" path="res://Scenes/Components/power_generation_component.tscn" id="3_neijf"]
 [ext_resource type="Script" path="res://Scenes/Structures/Generator/Inactive.cs" id="5_8pkvt"]
+[ext_resource type="Script" path="res://Scenes/Structures/Generator/Active.cs" id="6_p5c7u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i7ewu"]
 size = Vector2(32, 32)
@@ -24,8 +25,13 @@ debug_color = Color(0, 0.6, 0.701961, 0)
 [node name="PowerGenerationComponent" parent="." instance=ExtResource("3_neijf")]
 GenerationPerMinute = 100.0
 
+[node name="PowerCapacitorComponent" type="Node" parent="."]
+
 [node name="StateMachine" parent="." node_paths=PackedStringArray("_initialState") instance=ExtResource("3_4xj53")]
 _initialState = NodePath("")
 
 [node name="Inactive" type="Node" parent="StateMachine"]
 script = ExtResource("5_8pkvt")
+
+[node name="Active" type="Node" parent="StateMachine"]
+script = ExtResource("6_p5c7u")
