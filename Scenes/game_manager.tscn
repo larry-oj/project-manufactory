@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://dk8udedy66m6o"]
+[gd_scene load_steps=4 format=3 uid="uid://dk8udedy66m6o"]
 
 [ext_resource type="Script" path="res://Scenes/GameManager.cs" id="1_oqbqj"]
+[ext_resource type="PackedScene" uid="uid://ujbbt5c35p6p" path="res://Scenes/World/world.tscn" id="2_j8vbv"]
+[ext_resource type="PackedScene" uid="uid://dowxfpq04auo7" path="res://Scenes/UI/ui.tscn" id="3_le3t5"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_oqbqj")
+
+[node name="World" parent="." instance=ExtResource("2_j8vbv")]
+
+[node name="UI" parent="." instance=ExtResource("3_le3t5")]
