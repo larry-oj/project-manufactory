@@ -27,3 +27,9 @@ window/stretch/mode="canvas_items"
 [dotnet]
 
 project/assembly_name="Project-manufactory"
+
+[layer_names]
+
+2d_physics/layer_1="Walls"
+2d_physics/layer_2="Structures"
+2d_physics/layer_3="Characters"
