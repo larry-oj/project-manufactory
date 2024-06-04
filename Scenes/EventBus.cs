@@ -7,5 +7,5 @@ namespace ProjectManufactory.Scenes;
 /// </summary>
 public partial class EventBus : Node
 {
-    
+    [Signal] public delegate void PowerTickElapsedEventHandler();
 }

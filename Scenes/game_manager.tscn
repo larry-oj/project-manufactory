@@ -10,3 +10,6 @@ script = ExtResource("1_oqbqj")
 [node name="World" parent="." instance=ExtResource("2_j8vbv")]
 
 [node name="UI" parent="." instance=ExtResource("3_le3t5")]
+
+[node name="PowerTick" type="Timer" parent="."]
+unique_name_in_owner = true

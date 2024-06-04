@@ -11,4 +11,9 @@ public static class Options
 	{
 		public static string ToggleBuilding => "toggle_building";
 	}
+
+	public static class Game
+	{
+		public static float PowerTickRate => 1/6;
+	}
 }
