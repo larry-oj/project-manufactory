@@ -10,28 +10,18 @@ public partial class StateMachine : Node
 
 	public void Init(Node2D parent)
 	{
+		var eventBus = GetNode<EventBus>(Options.Path.EventBus);
+		
 		foreach (var child in GetChildren())
 		{
 			if (child is not State state) continue;
             
 			state.Transitioned += OnChildTransition;
-			state.Init(parent);
+			state.Init(parent, eventBus);
 		}
         
 		_currentState = _initialState;
 		_currentState.Enter();
-	}
-
-	public void Shutdown()
-	{
-		foreach (var child in GetChildren())
-		{
-			if (child is not State state) continue;
-			state.Transitioned -= OnChildTransition;
-		}
-        
-		_currentState?.Exit();
-		_currentState = null;
 	}
 
 	public void Process(double delta)

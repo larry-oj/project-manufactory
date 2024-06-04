@@ -7,10 +7,12 @@ public partial class State : Node
 	[Signal] public delegate void TransitionedEventHandler(State state, State newState);
     
 	protected Node2D Parent;
+	protected EventBus EventBus;
 
-	public void Init(Node2D parent)
+	public void Init(Node2D parent, EventBus eventBus)
 	{
 		Parent = parent;
+		EventBus = eventBus;
 	}
 
 	public virtual void Enter() {}

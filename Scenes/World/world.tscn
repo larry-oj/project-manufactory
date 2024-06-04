@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://ujbbt5c35p6p"]
+[gd_scene load_steps=5 format=3 uid="uid://ujbbt5c35p6p"]
 
+[ext_resource type="Script" path="res://Scenes/World/World.cs" id="1_6fmhr"]
 [ext_resource type="TileSet" uid="uid://dqd7ygp4imxmy" path="res://Tilesets/buildings.tres" id="1_6wuu7"]
+[ext_resource type="PackedScene" uid="uid://dj722i2xd4o4s" path="res://Scenes/StateMachine/state_machine.tscn" id="3_rb6ff"]
+[ext_resource type="Script" path="res://Scenes/World/MainState.cs" id="4_wu31q"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_6fmhr")
 
 [node name="Environment" type="TileMap" parent="."]
 tile_set = ExtResource("1_6wuu7")
@@ -18,3 +22,9 @@ layer_3/tile_data = PackedInt32Array()
 
 [node name="Camera" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("_initialState") instance=ExtResource("3_rb6ff")]
+_initialState = NodePath("MainState")
+
+[node name="MainState" type="Node" parent="StateMachine"]
+script = ExtResource("4_wu31q")

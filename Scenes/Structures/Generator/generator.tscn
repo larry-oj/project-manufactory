@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdjh3l3aomn8j"]
+
+[ext_resource type="Script" path="res://Scenes/Structures/Generator/Generator.cs" id="1_k8fo4"]
+[ext_resource type="Texture2D" uid="uid://cws8k8ofxxope" path="res://Graphics/Buildings/generator_sprite.tres" id="2_vysrv"]
+[ext_resource type="PackedScene" uid="uid://dj722i2xd4o4s" path="res://Scenes/StateMachine/state_machine.tscn" id="3_4xj53"]
+[ext_resource type="Script" path="res://Scenes/Structures/Generator/IdleState.cs" id="4_t5es5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7ewu"]
+size = Vector2(32, 32)
+
+[node name="Generator" type="StaticBody2D"]
+script = ExtResource("1_k8fo4")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_vysrv")
+offset = Vector2(8, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, -8)
+shape = SubResource("RectangleShape2D_i7ewu")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="StateMachine" parent="." instance=ExtResource("3_4xj53")]
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("4_t5es5")

@@ -6,4 +6,9 @@ public static class Options
 	{
 		public static string EventBus => "/root/EventBus";
 	}
+
+	public static class Input
+	{
+		public static string ToggleBuilding => "toggle_building";
+	}
 }
